@@ -1,0 +1,168 @@
+﻿@model LibraryManagementViewModel.BookModel
+@using Newtonsoft.Json;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('../../Images/create.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+@*<link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">*@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="~/Scripts/ViewScripts/Book.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @*<h4>BookModel</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.isbnNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.isbnNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.isbnNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.authNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.authNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.authNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.edition, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.edition, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.edition, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.staffId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.staffId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.staffId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*the staffId dropdown List*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.staffId, "Staff", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.staffId, (List<SelectListItem>)ViewBag.StaffList, "Select Staff", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.staffId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.publisherId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.publisherId, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.publisherId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @*The publisherId dropdown list*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.publisherId, "Publisher", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.publisherId, (List<SelectListItem>)ViewBag.PublisherList, "Select Publisher", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.publisherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group" id="auth">
+            @Html.LabelFor(model => model.releaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.releaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.releaseDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="price">
+            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Create" class="btn btn-default" />*@
+                <button id="btnAdd" type="submit" class="btn btn-default" hidden="">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <!--<div class="modal fade delete-modal" id="bookCreateModal">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">-->
+                <!-- Modal body -->
+                <!--<div class="modal-body" id="generalWarningArea">
+                    <p class="modal-title" id="generalWarningMsg">Are you sure you want to Create a new  book ?</p>
+                </div>-->
+                <!-- Modal footer -->
+                <!--<div class="modal-footer">
+                    <button type="button" class="btn btn-red-outline" data-dismiss="modal" id="btnBookCreateNo">No</button>
+                    <button type="button" class="btn btn-blue" id="btnBookCreateYes">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

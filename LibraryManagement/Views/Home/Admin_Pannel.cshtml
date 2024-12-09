@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Admin_Pannel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+<style>
+    /* Set background image */
+    /*body {
+        background-image: url('../../Images/home.jpg');
+        background-size: cover;
+    }*/
+
+
+    .login-bg {
+        background-image: url('../../Images/login.jpg');
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* Style for the buttons */
+    .btn-custom {
+        background-color: #2196F3;
+        color: white;
+        font-weight: bold;
+        border-radius: 0;
+    }
+
+    /* Style for the button container */
+    .button-container {
+        margin-top: 50px;
+    }
+</style>
+<div class="login-bg">
+    <div class="container">
+        <div class="row justify-content-center button-container">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="@Url.Action("Index", "Book")" class="btn btn-primary btn-block">Books</a>
+            </div>
+        </div>
+        <div class="row justify-content-center button-container">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="@Url.Action("Index", "Publisher")" class="btn btn-primary btn-block">Publishers</a>
+            </div>
+        </div>
+        <div class="row justify-content-center button-container">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="@Url.Action("Index", "Reader")" class="btn btn-primary btn-block">Readers</a>
+            </div>
+        </div>
+        <div class="row justify-content-center button-container">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="@Url.Action("Index", "BookReservation")" class="btn btn-primary btn-block">Book Reservations</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

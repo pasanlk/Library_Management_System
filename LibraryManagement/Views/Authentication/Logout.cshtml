@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>Are you sure you want to logout?</h2>
+
+<button id="logout-btn" class="btn btn-primary">Logout</button>
+
+@*@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#logout-btn').click(function () {
+                $.ajax({
+                    url: '@Url.Action("Logout", "Authentication")',
+                    type: 'POST',
+                    success: function () {
+                        window.location.href = '@Url.Action("Login", "Authentication")';
+                    }
+                });
+            });
+        });
+    </script>
+}*@
